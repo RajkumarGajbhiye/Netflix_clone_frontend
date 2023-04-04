@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "../css/Featured.scss";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
-const Featured = ({ type, setGenre }) => {
+const Featured = () => {
   const [randomMovie, setRandomMovie] = useState({});
-  const navigate = useNavigate();
 
   useEffect(() => {
-    let token = localStorage.getItem("token");
-
-    if (!token) {
-      navigate("/signup");
-    }
-
     const getRandomMovie = async () => {
       try {
-        const res = await axios.get(`https://netflix-clone-backend-plum.vercel.app/api/movie/random`);
+        const res = await axios.get(
+          `https://netflix-clone-backend-plum.vercel.app/api/movie/random`
+        );
         console.log(res);
         setRandomMovie(res.data[0]);
       } catch (err) {

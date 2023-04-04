@@ -4,25 +4,12 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import Featured from "../components/Featured";
 import List from "../components/List";
-import { useNavigate } from "react-router-dom";
 
 const Home = ({ type }) => {
-  const navigate = useNavigate();
-  useEffect(()=>{
-    let token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/signup");
-    }
-
-  },[])
-
-
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(null);
-  
-  useEffect(() => {
 
-    
+  useEffect(() => {
     const getRandomLists = async () => {
       try {
         let authToken = localStorage.getItem("token");

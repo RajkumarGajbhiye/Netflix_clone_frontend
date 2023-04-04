@@ -1,8 +1,10 @@
 import App from "../App";
+import ProtectedRoute from "../components/ProtectedRoute";
 import Home from "../pages/Home";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Watch from "../pages/Watch";
+
 
 const route = [
   {
@@ -11,23 +13,19 @@ const route = [
   },
   {
     path: "/signin",
-    element: <SignIn />,
+    element: <SignIn/>,
   },
   {
     path: "/signup",
     element: <SignUp />,
   },
-  // {
-  //   path: "/movies",
-  //   element: <Home type = "movie"/>,
-  // },
   {
     path: "/series",
-    element: <Home type="series" />,
+    element:<ProtectedRoute><Home type="series" /></ProtectedRoute> ,
   },
   {
     path: "/watch/:_id",
-    element: <Watch />,
+    element: <ProtectedRoute><Watch/></ProtectedRoute>,
   },
 ];
 

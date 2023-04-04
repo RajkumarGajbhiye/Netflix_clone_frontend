@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "../css/Watch.scss";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 const Watch = () => {
   const { _id } = useParams();
-  const navigate = useNavigate();
+
   const [movievideo, setMovieVideo] = useState([]);
 
   useEffect(() => {
-    let token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/signup");
-    }
-
     axios
-      .get(`https://netflix-clone-backend-plum.vercel.app/api/movie/singlefind/${_id}`)
+      .get(
+        `https://netflix-clone-backend-plum.vercel.app/api/movie/singlefind/${_id}`
+      )
       .then((res) => {
         console.log(res.data);
         setMovieVideo(res.data);

@@ -3,19 +3,8 @@ import "../css/List.scss";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import ListItem from "./ListItem";
-import { useNavigate } from "react-router-dom";
 
 const List = ({ list }) => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    let token = localStorage.getItem("token");
-
-    if (!token) {
-      navigate("/signup");
-    }
-  }, []);
-
   const [slideNumber, setSlideNumber] = useState(0);
   const [isMoved, setIsMoved] = useState(false);
   const listRef = useRef();

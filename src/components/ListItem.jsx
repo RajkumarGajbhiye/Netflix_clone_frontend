@@ -5,19 +5,13 @@ import AddIcon from "@mui/icons-material/Add";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutlined";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ListItem = ({ index, item }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [movie, setMovie] = useState({});
-  const navigate = useNavigate();
 
   useEffect(() => {
-    let token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/signup");
-    }
-
     const getMovie = async () => {
       try {
         const res = await axios.get(
